@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="IIC IIT Bombay">
+  <!-- White circular badge -->
+  <circle cx="100" cy="100" r="98" fill="#FFFFFF" stroke="#E3E6EE" stroke-width="1.5"/>
+
+  <!-- Yellow figure (left): head + flowing body, leaning toward centre -->
+  <g fill="#F5A623">
+    <circle cx="75" cy="38" r="13"/>
+    <path d="M 75 51
+             C 53 58, 48 92, 72 106
+             C 90 110, 106 100, 108 86
+             C 110 70, 98 60, 86 56
+             C 81 54, 77 52, 75 51 Z"/>
+  </g>
+
+  <!-- Blue figure (right): head + flowing body, leaning toward centre -->
+  <g fill="#1B2A8C">
+    <circle cx="125" cy="38" r="13"/>
+    <path d="M 125 51
+             C 147 58, 152 92, 128 106
+             C 110 110, 94 100, 92 86
+             C 90 70, 102 60, 114 56
+             C 119 54, 123 52, 125 51 Z"/>
+  </g>
+
+  <!-- Red crescent at the bottom -->
+  <path d="M 52 128
+           C 66 162, 134 162, 148 128
+           C 132 145, 68 145, 56 128 Z" fill="#C0392B"/>
+</svg>

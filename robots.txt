@@ -1,0 +1,4 @@
+# Preview deployment of the IIC IIT Bombay website.
+# The canonical site is https://iic.iitb.ac.in — this copy must not be indexed.
+User-agent: *
+Disallow: /

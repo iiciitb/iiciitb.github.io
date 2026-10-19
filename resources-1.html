@@ -1,0 +1,850 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Resource Vault | IIC IIT Bombay</title><meta name="description" content="A practical resource vault for innovation, entrepreneurship, funding, incubation, prototyping and IP support at IIT Bombay and across India."><meta name="theme-color" content="#1B2A8C"><link rel="stylesheet" href="assets/css/main.css"><style>
+/* Resource Vault — IIC IIT Bombay
+   Uses the same design tokens and visual language as main.css. */
+:root{--rv-navy:#1B2A8C;--rv-blue:#2D4EC8;--rv-blue2:#4A6BE5;--rv-gold:#F5A623;--rv-gold2:#FFC15C;--rv-ink:#15182A;--rv-soft:#3a3f55;--rv-muted:#6b7280;--rv-rule:#e3e6ee;--rv-bg:#fff;--rv-softbg:#F4F6FB;--rv-cream:#FBF7EE}
+*{box-sizing:border-box}
+body{margin:0;background:var(--rv-bg);color:var(--rv-ink);font-family:Inter,Calibri,"Trebuchet MS",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img,svg{max-width:100%;display:block} a{color:var(--rv-blue);text-decoration:none} button{font:inherit;cursor:pointer}
+.container{width:min(1200px,calc(100% - 48px));margin:0 auto}
+/* Header */
+.site-header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--rv-rule)}
+.nav{min-height:76px;display:flex;align-items:center;gap:24px;max-width:1200px;width:calc(100% - 48px);margin:0 auto}
+.brand{display:flex;align-items:center;gap:12px;color:var(--rv-ink);text-decoration:none;margin-right:auto}.brand-logo{width:42px;height:42px;object-fit:contain}.brand-text{font-family:Georgia,"Times New Roman",serif;font-size:18px;font-weight:700;color:var(--rv-navy);line-height:1.1}.brand-text small{display:block;font-family:Inter,system-ui,sans-serif;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--rv-muted);font-weight:600;margin-top:3px}
+.nav-links{display:flex;align-items:center;gap:4px;list-style:none;margin:0;padding:0}.nav-links a{display:block;padding:8px 11px;border-radius:8px;color:var(--rv-soft);font-size:14px;font-weight:600;transition:.16s ease}.nav-links a:hover,.nav-links a[aria-current=page]{background:var(--rv-softbg);color:var(--rv-navy)}
+.nav-cta{display:flex;align-items:center;gap:12px}.btn{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:8px;padding:10px 18px;font-weight:700;text-decoration:none;transition:transform .16s ease,box-shadow .16s ease,background .16s ease}.btn--primary{background:linear-gradient(135deg,var(--rv-gold),var(--rv-gold2));color:var(--rv-navy);box-shadow:0 7px 20px rgba(245,166,35,.22)}.btn--primary:hover{transform:translateY(-1px);box-shadow:0 10px 26px rgba(245,166,35,.35)}.btn--small{padding:8px 16px;font-size:13.5px}.hamburger{display:none;background:transparent;border:1px solid var(--rv-rule);border-radius:8px;padding:8px}.hamburger span{display:block;width:20px;height:2px;background:var(--rv-navy);margin:4px}
+/* Hero */
+.page-hero{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--rv-navy),var(--rv-blue) 55%,var(--rv-blue2));color:#fff;padding:64px 0 78px}.page-hero:before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.09) 1.2px,transparent 1.2px);background-size:28px 28px;opacity:.45}.page-hero:after{content:"";position:absolute;right:-7%;top:-38%;width:560px;height:560px;border-radius:50%;background:radial-gradient(closest-side,rgba(245,166,35,.32),transparent 70%)}.hero-inner{position:relative;z-index:1;max-width:800px}.eyebrow{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--rv-gold2);margin-bottom:14px}.page-hero h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(38px,5vw,58px);line-height:1.05;margin:0 0 16px;color:#fff;letter-spacing:-.02em}.page-hero h1 em{font-style:normal;background:linear-gradient(135deg,var(--rv-gold),var(--rv-gold2));background-clip:text;-webkit-background-clip:text;color:transparent}.page-hero p{max-width:64ch;color:rgba(255,255,255,.86);font-size:18px;margin:0}.hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}.hero-pill{border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.09);border-radius:999px;padding:7px 12px;font-size:12px;font-weight:600;color:rgba(255,255,255,.9)}
+/* Vault */
+.vault{padding:52px 0 80px;background:var(--rv-bg)}.toolbar{position:sticky;top:76px;z-index:40;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--rv-rule);padding:14px 0;box-shadow:0 4px 18px rgba(15,23,42,.04)}.toolbar-inner{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.search{flex:1 1 280px;position:relative}.search input{width:100%;font:inherit;font-size:15px;color:var(--rv-ink);background:#fff;border:1px solid var(--rv-rule);border-radius:10px;padding:11px 13px 11px 38px;outline:none}.search input:focus{border-color:var(--rv-blue);box-shadow:0 0 0 4px rgba(45,78,200,.1)}.search svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--rv-navy);opacity:.55}.seg{display:flex;border:1px solid var(--rv-rule);border-radius:10px;overflow:hidden;background:#fff}.seg button{border:0;background:#fff;color:var(--rv-soft);padding:10px 13px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}.seg button+button{border-left:1px solid var(--rv-rule)}.seg button[aria-pressed=true]{background:var(--rv-navy);color:#fff}.count{font-size:12px;color:var(--rv-muted);white-space:nowrap;font-weight:600}.filter-row{display:flex;align-items:flex-start;gap:12px;padding-top:12px;flex-wrap:wrap}.filter-key{width:52px;flex:none;padding-top:7px;font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--rv-muted)}.chips{display:flex;gap:7px;flex-wrap:wrap;flex:1}.chip{border:1px solid var(--rv-rule);background:#fff;border-radius:999px;padding:6px 10px;display:inline-flex;align-items:center;gap:6px;color:var(--rv-soft);font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}.chip:hover,.chip[aria-pressed=true]{border-color:var(--rv-blue);color:var(--rv-navy);background:rgba(45,78,200,.05)}.chip .dot{width:7px;height:7px;border-radius:50%;background:var(--dot,var(--rv-blue))}.chip-clear{border-style:dashed}
+.block{padding-top:46px}.block-head{display:flex;align-items:center;gap:12px;padding-bottom:14px;border-bottom:2px solid var(--rv-navy)}.block-mark{font-family:Georgia,serif;font-weight:700;font-size:13px;background:var(--rv-navy);color:#fff;padding:4px 9px;border-radius:6px}.block-title{font-family:Georgia,"Times New Roman",serif;font-weight:700;font-size:24px;color:var(--rv-navy)}.block-note{font-size:13px;color:var(--rv-muted);margin-left:auto;text-align:right}.cat{padding:25px 0 6px}.cat-head{display:flex;align-items:center;gap:9px;font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--rv-muted);padding-bottom:10px}.cat-head .bar{width:18px;height:3px;border-radius:3px;background:var(--catc)}.cat-head .n{margin-left:auto;opacity:.65}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}.tile{position:relative;text-align:left;cursor:pointer;background:#fff;border:1px solid var(--rv-rule);border-radius:14px;padding:17px 17px 16px 20px;min-height:142px;display:flex;flex-direction:column;gap:8px;color:var(--rv-ink);box-shadow:0 2px 7px rgba(15,23,42,.035);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}.tile:before{content:"";position:absolute;left:0;top:14px;bottom:14px;width:4px;border-radius:0 4px 4px 0;background:var(--catc)}.tile:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(27,42,140,.11);border-color:rgba(45,78,200,.25)}.tile-code{font-size:10px;font-weight:800;letter-spacing:.11em;color:var(--catc);text-transform:uppercase}.tile-name{font-family:Georgia,"Times New Roman",serif;font-size:17px;font-weight:700;line-height:1.25;color:var(--rv-navy)}.tile-tag{margin-top:auto;font-size:11px;color:var(--rv-muted);font-weight:600}.tile-marks{display:flex;gap:5px;margin-top:2px}.tile-marks i{font-style:normal;border:1px solid var(--rv-rule);border-radius:999px;padding:2px 7px;color:var(--rv-muted);font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}.empty{padding:70px 20px;text-align:center;color:var(--rv-muted);border:1px dashed var(--rv-rule);border-radius:14px;margin-top:32px;background:var(--rv-softbg)}.empty strong{display:block;font-family:Georgia,serif;font-size:21px;color:var(--rv-navy);margin-bottom:6px}
+/* Drawer */
+.scrim{position:fixed;inset:0;background:rgba(21,24,42,.42);z-index:150;opacity:0;pointer-events:none;transition:opacity .2s ease}.scrim.open{opacity:1;pointer-events:auto}.drawer{position:fixed;top:0;right:0;bottom:0;width:min(470px,100%);z-index:160;background:#fff;border-left:1px solid var(--rv-rule);transform:translateX(100%);transition:transform .28s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;box-shadow:-12px 0 36px rgba(15,23,42,.1)}.drawer.open{transform:translateX(0)}.drawer-top{padding:24px 28px 20px;border-bottom:1px solid var(--rv-rule);display:flex;align-items:flex-start;gap:14px;background:linear-gradient(180deg,#fff,var(--rv-softbg))}.drawer-close{margin-left:auto;background:#fff;border:1px solid var(--rv-rule);border-radius:8px;width:34px;height:34px;cursor:pointer;font-size:19px;line-height:1;color:var(--rv-soft)}.drawer-close:hover{background:var(--rv-softbg);color:var(--rv-navy)}.drawer-code{font-size:11px;font-weight:800;letter-spacing:.11em;color:var(--dcat)}.drawer-name{font-family:Georgia,"Times New Roman",serif;font-weight:700;font-size:27px;line-height:1.15;color:var(--rv-navy);margin:6px 0 0}.drawer-body{padding:24px 28px 30px;overflow-y:auto;flex:1}.meta{border-top:1px solid var(--rv-rule);padding:14px 0;display:flex;gap:16px}.meta:first-child{border-top:0;padding-top:0}.meta-k{width:90px;flex:none;font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--rv-muted);padding-top:3px}.meta-v{font-size:14.5px;line-height:1.55;word-break:break-word}.meta-v a{color:var(--rv-blue);text-decoration:underline;text-underline-offset:2px}.pill{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:700;letter-spacing:.05em}.pill .dot{width:9px;height:9px;border-radius:50%;background:var(--dcat)}.warn{font-size:11px;line-height:1.5;color:#7A5A05;background:var(--rv-cream);border:1px solid #E5C86A;border-radius:8px;padding:10px 12px;margin-top:14px}.go{display:block;margin-top:24px;text-align:center;text-decoration:none;background:linear-gradient(135deg,var(--rv-gold),var(--rv-gold2));color:var(--rv-navy);font-family:Georgia,serif;font-weight:700;font-size:16px;padding:13px 18px;border-radius:9px}.go:hover{color:var(--rv-navy);transform:translateY(-1px)}.go-url{font-size:11px;color:var(--rv-muted);margin-top:9px;text-align:center;word-break:break-all;line-height:1.45}.verified{text-align:center;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--rv-muted);margin-top:16px;opacity:.8}
+/* Footer */
+.site-footer{background:var(--rv-navy);color:#fff;padding:64px 0 24px}.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:32px}.footer-brand{display:flex;align-items:center;gap:12px;margin-bottom:12px}.footer-brand .brand-logo{width:42px;height:42px}.footer-brand .brand-text{color:#fff}.footer-brand .brand-text small{color:rgba(255,255,255,.6)}.footer-grid h4{font-family:Inter,system-ui,sans-serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--rv-gold);margin:0 0 16px}.footer-grid p,.footer-grid li{color:rgba(255,255,255,.78);font-size:14px}.footer-grid ul{list-style:none;margin:0;padding:0}.footer-grid li{margin-bottom:8px}.footer-grid a{color:rgba(255,255,255,.78)}.footer-grid a:hover{color:var(--rv-gold)}.social{display:flex;gap:8px;margin-top:12px}.social a{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);display:grid;place-items:center;color:#fff}.social a:hover{background:var(--rv-gold);color:var(--rv-navy)}.social svg{width:16px;height:16px}.footer-meta{border-top:1px solid rgba(255,255,255,.15);margin-top:48px;padding-top:16px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:rgba(255,255,255,.6);font-size:12.5px}
+@media(max-width:900px){.nav-links{display:none}.nav-cta .btn{display:none}.hamburger{display:block}.footer-grid{grid-template-columns:1fr 1fr}.block-note{margin-left:0}.block-head{flex-wrap:wrap}.block-note{width:100%;text-align:left}}
+@media(max-width:640px){.container,.nav{width:calc(100% - 36px)}.page-hero{padding:48px 0 58px}.toolbar{top:76px}.grid{grid-template-columns:1fr 1fr}.seg{width:100%}.seg button{flex:1}.filter-key{width:100%;padding-top:0}.footer-grid{grid-template-columns:1fr}.hero-meta{gap:7px}.tile{min-height:130px}.block-title{font-size:22px}}
+@media(max-width:460px){.grid{grid-template-columns:1fr}.drawer-body,.drawer-top{padding-left:20px;padding-right:20px}}
+@media(prefers-reduced-motion:reduce){*{transition-duration:.01ms!important}.tile:hover{transform:none}}
+
+
+/* Visible resource links: every real Excel URL is directly accessible from its card. */
+.tile-link{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:max-content;
+  max-width:100%;
+  margin-top:6px;
+  padding:5px 9px;
+  border:1px solid var(--rv-rule);
+  border-radius:7px;
+  background:var(--rv-softbg);
+  color:var(--rv-blue)!important;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.04em;
+  text-decoration:none!important;
+}
+.tile-link:hover{background:var(--rv-navy);border-color:var(--rv-navy);color:#fff!important}
+.tile-link--disabled{color:var(--rv-muted)!important;cursor:default;white-space:normal}
+</style></head><body><header class="site-header">
+  <nav class="nav" aria-label="Primary">
+    <a href="index.html" class="brand" aria-label="IIC IIT Bombay home">
+      <img src="assets/img/IIC-logo.png" alt="" class="brand-logo">
+      <span class="brand-text">IIC IIT Bombay<small>Innovation Council</small></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="council.html">Council</a></li><li><a href="initiatives.html">Initiatives</a></li><li><a href="ecosystem.html">Ecosystem</a></li><li><a href="resources.html" aria-current="page">Resources</a></li><li><a href="help.html">Get Help</a></li>
+    </ul>
+    <div class="nav-cta"><a href="help.html" class="btn btn--primary btn--small">Get Help</a><button class="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button></div>
+  </nav>
+</header><section class="page-hero">
+  <div class="container"><div class="hero-inner">
+    <div class="eyebrow">Institution's Innovation Council · IIT Bombay</div>
+    <h1>Your map to the <em>innovation ecosystem.</em></h1>
+    <p>A practical vault of funding, incubators, competitions, prototyping facilities, IP support, mentors and startup resources — on campus and across India.</p>
+    <div class="hero-meta"><span class="hero-pill">Search by need</span><span class="hero-pill">Filter by stage</span><span class="hero-pill">Open verified links</span></div>
+  </div></div>
+</section><section class="toolbar" aria-label="Resource filters"><div class="container">
+  <div class="toolbar-inner"><div class="search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="q" type="search" placeholder="Search resources, e.g. patent, seed, prototype" aria-label="Search resources"></div><div class="seg" id="locSeg" role="group" aria-label="Filter by location"><button data-loc="all" aria-pressed="true">All</button><button data-loc="inside" aria-pressed="false">On campus</button><button data-loc="outside" aria-pressed="false">National</button></div><div class="count" id="count"></div></div>
+  <div class="filter-row"><div class="filter-key">Stage</div><div class="chips" id="stageChips"></div></div>
+  <div class="filter-row"><div class="filter-key">Type</div><div class="chips" id="chips"></div></div>
+</div></section><main class="vault"><div class="container" id="results"></div></main><footer class="site-footer"><div class="container"><div class="footer-grid">
+<div><div class="footer-brand"><img src="assets/img/IIC-logo.png" alt="" class="brand-logo"><span class="brand-text">IIC IIT Bombay<small>Innovation Council</small></span></div><p>The Institution's Innovation Council at IIT Bombay. Established under the Ministry of Education, Government of India. Powered by DSSE.</p><div class="social"><a href="https://www.instagram.com/iic.iitbombay/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg></a><a href="https://www.linkedin.com/company/iic-iit-bombay" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.6v1.7h.05c.5-.9 1.7-1.85 3.5-1.85 3.75 0 4.45 2.46 4.45 5.66V21h-4v-5.4c0-1.29-.03-2.94-1.79-2.94-1.8 0-2.07 1.4-2.07 2.85V21H10z"/></svg></a></div></div>
+<div><h4>Explore</h4><ul><li><a href="about.html">About IIC</a></li><li><a href="council.html">Council</a></li><li><a href="initiatives.html">Initiatives</a></li></ul></div>
+<div><h4>For Students</h4><ul><li><a href="help.html">Get Help</a></li><li><a href="ecosystem.html">Innovation Ecosystem</a></li><li><a href="resources.html">Resources</a></li></ul></div>
+<div><h4>Reach Us</h4><p>5th Floor, New DSSE Building<br>IIT Bombay, Powai<br>Mumbai 400076</p><p><a href="mailto:iic@iitb.ac.in" style="color:var(--rv-gold)">iic@iitb.ac.in</a></p></div>
+</div><div class="footer-meta"><span>© <span id="year">2026</span> Institution's Innovation Council, IIT Bombay</span><span>Established under the Ministry of Education, Government of India</span></div></div></footer><div class="scrim" id="scrim"></div><aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dName" tabindex="-1"><div class="drawer-top"><div><div class="drawer-code" id="dCode"></div><h2 class="drawer-name" id="dName"></h2></div><button class="drawer-close" id="dClose" aria-label="Close details">&times;</button></div><div class="drawer-body" id="dBody"></div></aside><script src="assets/js/main.js" defer></script><script>
+(function(){
+"use strict";
+
+const CATS = {
+ "Funding & Grants": {color:"#0A6E52",short:"Funding"},
+ "Competitions": {color:"#A81F1A",short:"Competitions"},
+ "Incubators / Accelerators": {color:"#2D4EC8",short:"Incubators"},
+ "Mentorship / Community / Fellowship": {color:"#6B2C82",short:"Mentorship"},
+ "Prototyping Facilities": {color:"#8A6205",short:"Prototyping"},
+ "IP & Legal": {color:"#0B6E82",short:"IP & Legal"},
+ "Other Institutional Support": {color:"#46525E",short:"Other Support"},
+ "Startup Ideas": {color:"#A61E5E",short:"Startup Ideas"},
+ "Startup Evaluators": {color:"#3F6212",short:"Evaluators"}
+};
+
+const CAT_ORDER = ["Funding & Grants","Competitions","Incubators / Accelerators",
+ "Mentorship / Community / Fellowship","Prototyping Facilities","IP & Legal",
+ "Other Institutional Support","Startup Ideas","Startup Evaluators"];
+
+const DATA = [
+ {
+  "loc": "inside",
+  "cat": "Funding & Grants",
+  "code": "SINE·A",
+  "name": "SINE — Apply (Incubation + Seed support)",
+  "desc": "Application portal for incubation at SINE. Incubated startups gain access to seed funding schemes (e.g., government SISFS routed via SINE) and incubator infrastructure.",
+  "stage": "Idea → Early-stage",
+  "stages": [
+   "idea",
+   "early"
+  ],
+  "url": "https://www.sineiitb.org/",
+  "phone": "022 2576 7016",
+  "email": "sine@sineiitb.org",
+  "ver": "19 August 2026"
+ },
+ {
+  "loc": "inside",
+  "cat": "Competitions",
+  "code": "EUR",
+  "name": "Eureka! — E-Cell Business Model Competition",
+  "desc": "Asia's largest business model competition, offering mentorship, funding exposure, and investor access for early-stage startup ideas. Open to participants beyond IIT Bombay.",
+  "stage": "Idea",
+  "stages": [
+   "idea"
+  ],
+  "url": "https://www.ecell.in/eureka/",
+  "email": "eureka26@ecell.in",
+  "ver": "19 August 2026"
+ },
+ {
+  "loc": "inside",
+  "cat": "Competitions",
+  "code": "ECI",
+  "name": "E-Cell Initiatives",
+  "desc": "A rolling calendar of E-Cell competitions and initiatives beyond Eureka!, covering various stages and formats through the year.",
+  "stage": "Any stage",
+  "stages": [
+   "idea",
+   "prototype",
+   "early",
+   "growth"
+  ],
+  "url": "https://www.ecell.in/initiatives",
+  "email": "support@ecell.in",
+  "ver": "19 August 2026"
+ },
+ {
+  "loc": "inside",
+  "cat": "Incubators / Accelerators",
+  "code": "SINE",
+  "name": "SINE — Incubator",
+  "desc": "IIT Bombay's technology business incubator, offering office space, mentorship, seed-fund access, and an investor network for tech startups (especially IITB-affiliated founders).",
+  "stage": "Early-stage → Growth",
+  "stages": [
+   "early",
+   "growth"
+  ],
+  "url": "https://www.sineiitb.org/",
+  "phone": "022 2576 7016",
+  "email": "sine@sineiitb.org",
+  "ver": "19 August 2026"
+ },
+ {
+  "loc": "inside",
+  "cat": "Incubators / Accelerators",
+  "code": "SINE·P",
+  "name": "SINE — Programs",
+  "desc": "Structured incubation programs and cohorts run by SINE, tailored to different startup stages.",
+  "stage": "Idea → Early-stage",
+  "stages": [
+   "idea",
+   "early"
+  ],
+  "url": "https://www.sineiitb.org/programs",
+  "phone": "022 2576 7016",
+  "email": "sine@sineiitb.org",
+  "ver": "19 August 2026"
+ },
+ {
+  "loc": "inside",
+  "cat": "Incubators / Accelerators",
+  "code": "ASP",
+  "name": "ASPIRE — IIT Bombay Research Park",
+  "desc": "An industry R&D co-location park that lets startups and companies set up R&D units alongside IIT Bombay for deep research collaboration.",
+  "stage": "Growth & scale",
+  "stages": [
+   "growth"
+  ],
+  "url": "https://iitbresearchpark.com/",
+  "phone": "91 (22) 2576 4000",
+  "email": "marcom.team@iitbresearchpark.com",
+  "ver": "19 August 2026"
+ },
+ {
+  "loc": "inside",
+  "cat": "Incubators / Accelerators",
+  "code": "IDEAS",
+  "name": "DSSE — IDEAS Pre-Incubation / WiE Mentoring",
+  "desc": "A pre-incubation and mentoring program, including a Women in Entrepreneurship (WiE) track, for early-stage student ideas.",
+  "stage": "Idea",
+  "stages": [
+   "idea"
+  ],
+  "url": "https://www.dsse.iitb.ac.in/mentoring",
+  "phone": "91 22-25765381",
+  "email": "office.dsse@iitb.ac.in",
+  "ver": "19 August 2026"
+ },
+ {
+  "loc": "inside",
+  "cat": "Incubators / Accelerators",
+  "code": "GRW",
+  "name": "IITB-Groww INV.ENT",
+  "desc": "An innovation and entrepreneurship program run jointly with the Groww Foundation.",
+  "stage": "Idea → Early-stage",
+  "stages": [
+   "idea",
+   "early"
+  ],
+  "url": "https://www.growwfoundationiitb.org/",
+  "email": "invdotent@iitb.ac.in",
+  "ver": "19 August 2026"
+ },
+ {
+  "loc": "inside",
+  "cat": "Mentorship / Community / Fellowship",
+  "code": "ECELL",
+  "name": "E-Cell",
+  "desc": "The Entrepreneurship Cell of IIT Bombay, running Eureka! and E-Summit, and offering a broader founder community, mentor network, and year-round events.",
+  "stage": "Any stage",
+  "stages": [
+   "idea",
+   "prototype",
+   "early",
+   "growth"
+  ],
+  "url": "https://www.ecell.in/",
+  "email": "support@ecell.in",
+  "ver": "19 August 2026"
+ },
+ {
+  "loc": "inside",
+  "cat": "Mentorship / Community / Fellowship",
+  "code": "ITC",
+  "name": "Institute Technical Council (ITC)",
+  "desc": "The umbrella body for IIT Bombay's technical clubs and activities — useful for finding technical co-founders and collaborators.",
+  "stage": "Idea → Prototype",
+  "stages": [
+   "idea",
+   "prototype"
+  ],
+  "url": "https://tech-iitb.org/",
+  "ver": "19 August 2026"
+ },
+ {
+  "loc": "inside",
+  "cat": "Mentorship / Community / Fellowship",
+  "code": "ACR",
+  "name": "Dean ACR / Alumni & Corporate Relations",
+  "desc": "The Institute's alumni network and corporate relations office, useful for mentor and investor introductions through alumni.",
+  "stage": "Any stage",
+  "stages": [
+   "idea",
+   "prototype",
+   "early",
+   "growth"
+  ],
+  "url": "https://acr.iitbombay.org/",
+  "email": "dean.acr.office@iitbombay.org",
+  "ver": "19 August 2026"
+ },
+ {
+  "loc": "inside",
+  "cat": "Prototyping Facilities",
+  "code": "DSSE",
+  "name": "DSSE — Desai Sethi School of Entrepreneurship",
+  "desc": "An overview of the various prototyping and entrepreneurship-support facilities housed at DSSE.",
+  "stage": "Prototype",
+  "stages": [
+   "prototype"
+  ],
+  "url": "https://www.dsse.iitb.ac.in/about#facilities",
+  "phone": "91 22-25765381",
+  "email": "office.dsse@iitb.ac.in",
+  "ver": "19 August 2026"
+ },
+ {
+  "loc": "inside",
+  "cat": "Prototyping Facilities",
+  "code": "MKR",
+  "name": "IIT Bombay Makerspace",
+  "desc": "Microfactories equipped with 3D printers, laser cutters, and other prototyping tools; runs the MS101 course and thematic labs in robotics, bioengineering, and design.",
+  "stage": "Prototype",
+  "stages": [
+   "prototype"
+  ],
+  "url": "https://makerspace.iitb.ac.in/home",
+  "phone": "Internal extension 6532 / 6540",
+  "ver": "19 August 2026"
+ },
+ {
+  "loc": "inside",
+  "cat": "Prototyping Facilities",
+  "code": "TL",
+  "name": "Tinkerers' Laboratory",
+  "desc": "A 24/7 student-run prototyping lab (established 2014) with mechanical, electrical, and electronics tools. Has supported 400+ projects and 10+ startups to date.",
+  "stage": "Prototype",
+  "stages": [
+   "prototype"
+  ],
+  "url": "https://itc.gymkhana.iitb.ac.in/TL/",
+  "email": "tinkererslaboratory@gmail.com",
+  "ver": "19 August 2026"
+ },
+ {
+  "loc": "inside",
+  "cat": "Prototyping Facilities",
+  "code": "IDC",
+  "name": "IDC School of Design",
+  "desc": "A rapid-prototyping cell, material library, and product development cell, alongside formal design education.",
+  "stage": "Prototype",
+  "stages": [
+   "prototype"
+  ],
+  "url": "https://www.idc.iitb.ac.in/",
+  "phone": "091-022-2576 7801 / 7802 / 7803",
+  "email": "office.idc@iitb.ac.in",
+  "ver": "19 August 2026"
+ },
+ {
+  "loc": "inside",
+  "cat": "Prototyping Facilities",
+  "code": "SAIF",
+  "name": "Central Instruments & Facilities (SAIF/CRNTS)",
+  "desc": "Open-access analytical instruments — including FEG-SEM, HR-TEM, NMR, LC-MS, and spectroscopy/chromatography equipment — available to academic and industrial users, including startups.",
+  "stage": "Prototype → Growth",
+  "stages": [
+   "prototype",
+   "growth"
+  ],
+  "url": "https://instruments.iitb.ac.in/",
+  "email": "office.saif@iitb.ac.in"
+ },
+ {
+  "loc": "inside",
+  "cat": "IP & Legal",
+  "code": "TECH",
+  "name": "IRCC — Technologies Available for Licensing",
+  "desc": "A catalogue of IIT Bombay patents and technologies (across energy, healthcare, and manufacturing) available for licensing, for founders looking to build a startup on existing IITB IP.",
+  "stage": "Idea",
+  "stages": [
+   "idea"
+  ],
+  "url": "https://rnd.iitb.ac.in/technology_innovation_landing_page",
+  "phone": "022 2576 7024",
+  "email": "ipr@ircc.iitb.ac.in"
+ },
+ {
+  "loc": "inside",
+  "cat": "Other Institutional Support",
+  "code": "RND",
+  "name": "IRCC — Research & Development",
+  "desc": "The central research and development portal for IIT Bombay — sponsored and consultancy research routed through faculty PIs.",
+  "stage": "Idea",
+  "stages": [
+   "idea"
+  ],
+  "url": "https://rnd.iitb.ac.in/",
+  "phone": "022 2576 7039",
+  "email": "dean.rnd.office@iitb.ac.in",
+  "ver": "19 August 2026"
+ },
+ {
+  "loc": "inside",
+  "cat": "Other Institutional Support",
+  "code": "DIV",
+  "name": "IIT Bombay — Divisions & Centres",
+  "desc": "Central directory of all IIT Bombay departments, research work, and centres of excellence — useful for finding potential research/technical collaborators.",
+  "stage": "Any stage",
+  "stages": [
+   "idea",
+   "prototype",
+   "early",
+   "growth"
+  ],
+  "url": "https://www.iitb.ac.in/divisions",
+  "ver": "19 August 2026"
+ },
+ {
+  "loc": "inside",
+  "cat": "Other Institutional Support",
+  "code": "NXT",
+  "name": "E-Cell NextCo",
+  "desc": "A platform for startup founders to find co-founders.",
+  "stage": "Idea",
+  "stages": [
+   "idea"
+  ],
+  "url": "https://www.ecell.in/nextco/",
+  "email": "nextco@ecell.in",
+  "ver": "19 August 2026"
+ },
+ {
+  "loc": "inside",
+  "cat": "Other Institutional Support",
+  "code": "FCF",
+  "name": "E-Cell FinCoF",
+  "desc": "A platform to find interns, freelancers, and co-founders.",
+  "stage": "Idea → Early-stage",
+  "stages": [
+   "idea",
+   "early"
+  ],
+  "url": "https://www.ecell.in/fincof/",
+  "email": "fincof@ecell.in"
+ },
+ {
+  "loc": "outside",
+  "cat": "Funding & Grants",
+  "code": "SISFS",
+  "name": "Startup India Seed Fund Scheme (SISFS)",
+  "desc": "Sector-agnostic seed funding for DPIIT-recognised startups incorporated ≤2 years, routed via empanelled incubators. Grant for PoC/prototype + convertible-debt tranche for market entry.",
+  "stage": "Idea → Early-stage",
+  "stages": [
+   "idea",
+   "early"
+  ],
+  "url": "https://seedfund.startupindia.gov.in/",
+  "ver": "19 August 2026"
+ },
+ {
+  "loc": "outside",
+  "cat": "Funding & Grants",
+  "code": "BIG",
+  "name": "BIRAC — Biotechnology Ignition Grant (BIG)",
+  "desc": "Flagship early-stage biotech grant for researchers/startups (incl. student founders) to take an idea to proof-of-concept; must be incubated or have functional in-house R&D lab.",
+  "stage": "Idea → Prototype",
+  "stages": [
+   "idea",
+   "prototype"
+  ],
+  "url": "https://birac.nic.in/big.php",
+  "phone": "91-11-49968888 / +91-11-49968830",
+  "email": "birac.dbt@nic.in",
+  "ver": "19 August 2026"
+ },
+ {
+  "loc": "outside",
+  "cat": "Funding & Grants",
+  "code": "AIM",
+  "name": "Atal Innovation Mission — AIC / ACIC / ANIC grants",
+  "desc": "Grant-in-aid to set up/scale incubation centres (not paid directly to individual startups, but AIC-incubated startups get funding access, mentorship & infra).",
+  "stage": "Any stage",
+  "stages": [
+   "idea",
+   "prototype",
+   "early",
+   "growth"
+  ],
+  "url": "https://aim.gov.in/",
+  "email": "md-aim@gov.in",
+  "ver": "19 August 2026"
+ },
+ {
+  "loc": "outside",
+  "cat": "Competitions",
+  "code": "SIH",
+  "name": "Smart India Hackathon (SIH)",
+  "desc": "India's largest national hackathon; student teams solve real problem statements from govt depts/PSUs/industry across 17+ themes.",
+  "stage": "Idea",
+  "stages": [
+   "idea"
+  ],
+  "url": "https://sih.gov.in/",
+  "phone": "011 29581222",
+  "email": "sih@aicte-india.org",
+  "ver": "19 August 2026"
+ },
+ {
+  "loc": "outside",
+  "cat": "Incubators / Accelerators",
+  "code": "AIC",
+  "name": "Atal Incubation Centres (AICs)",
+  "desc": "Network of 100+ incubators across India (universities, corporates) offering mentorship, infra, seed-funding access, investor connects across sectors.",
+  "stage": "Idea → Early-stage",
+  "stages": [
+   "idea",
+   "early"
+  ],
+  "url": "https://aim.gov.in/",
+  "email": "md-aim@gov.in",
+  "ver": "19 August 2026"
+ },
+ {
+  "loc": "outside",
+  "cat": "Incubators / Accelerators",
+  "code": "THUB",
+  "name": "T-Hub",
+  "desc": "T-Hub is the World's largest home for Startups, democratizing access for 10000+ startups.",
+  "stage": "Early-stage → Growth",
+  "stages": [
+   "early",
+   "growth"
+  ],
+  "url": "https://www.t-hub.co/",
+  "email": "contact@t-hub.co",
+  "ver": "19 August 2026"
+ },
+ {
+  "loc": "outside",
+  "cat": "Incubators / Accelerators",
+  "code": "MHS",
+  "name": "MHStart",
+  "desc": "Maharashtra Hub helps build your startup and gives support by grants, network, and resources",
+  "stage": "Idea → Early-stage",
+  "stages": [
+   "idea",
+   "early"
+  ],
+  "url": "https://www.mhstart.com/",
+  "phone": "91 9876543210",
+  "email": "build@mhstart.com",
+  "ver": "19 August 2026",
+  "warn": "Phone number in the source sheet looks like a placeholder — verify before sharing."
+ },
+ {
+  "loc": "outside",
+  "cat": "Incubators / Accelerators",
+  "code": "NAT",
+  "name": "T-Hub, CIIE.CO, Villgro, NSRCEL, etc. (other national incubators)",
+  "desc": "Well-known India incubators/accelerators outside IITB offering cohort-based acceleration, mentorship and seed capital across sectors (deep-tech, social impact, climate).",
+  "stage": "Early-stage → Growth",
+  "stages": [
+   "early",
+   "growth"
+  ],
+  "url": "https://www.startupindia.gov.in/",
+  "phone": "1-800-115-565",
+  "ver": "19 August 2026"
+ },
+ {
+  "loc": "outside",
+  "cat": "Mentorship / Community / Fellowship",
+  "code": "STIN",
+  "name": "Startup India Hub / Mentorship programs",
+  "desc": "National startup portal offering DPIIT recognition, mentor connect, learning resources and scheme navigation for all Indian startups.",
+  "stage": "Any stage",
+  "stages": [
+   "idea",
+   "prototype",
+   "early",
+   "growth"
+  ],
+  "url": "https://www.startupindia.gov.in/",
+  "phone": "1-800-115-565",
+  "ver": "19 August 2026"
+ },
+ {
+  "loc": "outside",
+  "cat": "Prototyping Facilities",
+  "code": "STPI",
+  "name": "STPI Centres of Entrepreneurship / Maker labs",
+  "desc": "Govt-run tech incubation and prototyping/maker infrastructure (hardware, IoT, AI labs) across Indian cities.",
+  "stage": "Prototype",
+  "stages": [
+   "prototype"
+  ],
+  "url": "https://www.stpi.in/",
+  "phone": "91-11-24628081",
+  "email": "webinfomgr@stpi.in",
+  "ver": "19 August 2026"
+ },
+ {
+  "loc": "outside",
+  "cat": "IP & Legal",
+  "code": "SIPP",
+  "name": "Scheme for Startups Intellectual Property Protection (SIPP)",
+  "desc": "Govt-funded IP facilitators help DPIIT-recognised startups file patents/trademarks/designs; 80% patent fee rebate, 50% trademark fee rebate, fast-track examination.",
+  "stage": "Idea → Early-stage",
+  "stages": [
+   "idea",
+   "early"
+  ],
+  "url": "https://www.startupindia.gov.in/content/sih/en/intellectual-property-rights.html",
+  "phone": "1-800-115-565",
+  "ver": "19 August 2026"
+ },
+ {
+  "loc": "outside",
+  "cat": "Startup Ideas",
+  "code": "RZP",
+  "name": "Razorpay — Fix My Itch",
+  "desc": "INDIA'S WISHLIST FOR FOUNDERS TO SOLVE",
+  "url": "https://razorpay.com/m/fix-my-itch/",
+  "ver": "19 August 2026",
+  "stages": []
+ },
+ {
+  "loc": "outside",
+  "cat": "Startup Ideas",
+  "code": "YC",
+  "name": "Y Combinator — Requests for Startups",
+  "desc": "Problems which yc combinators wants founders to solve",
+  "url": "https://www.ycombinator.com/rfs",
+  "ver": "19 August 2026",
+  "stages": []
+ },
+ {
+  "loc": "outside",
+  "cat": "Startup Ideas",
+  "code": "RDT",
+  "name": "r/SomebodyMakeThis",
+  "desc": "a community where people problems which are not yet solved",
+  "url": "https://www.reddit.com/r/SomebodyMakeThis/",
+  "ver": "19 August 2026",
+  "stages": []
+ },
+ {
+  "loc": "outside",
+  "cat": "Startup Ideas",
+  "code": "PSI",
+  "name": "ProblemSight",
+  "desc": "a website which lists existing problems and pain points",
+  "url": "https://problemsight.com/",
+  "ver": "19 August 2026",
+  "stages": []
+ },
+ {
+  "loc": "outside",
+  "cat": "Startup Evaluators",
+  "code": "EQD",
+  "name": "Equidam",
+  "desc": "free startup evaluator which benchmarks your startup against existing startups",
+  "url": "https://www.equidam.com/",
+  "ver": "19 August 2026",
+  "stages": []
+ },
+ {
+  "loc": "outside",
+  "cat": "Startup Evaluators",
+  "code": "HKI",
+  "name": "HackIndia — AI Startup Validator",
+  "desc": "free ai startup evaluator",
+  "url": "https://hackindia.org/career-guide/ai-startup-validator",
+  "ver": "19 August 2026",
+  "stages": []
+ }
+];
+
+const STAGES = [
+ {key:"idea",label:"Idea"},
+ {key:"prototype",label:"Prototype"},
+ {key:"early",label:"Early-stage"},
+ {key:"growth",label:"Growth"}
+];
+
+const INTENTS = [
+ {label:"I need an idea to work on",cats:["Startup Ideas"]},
+ {label:"I need money",cats:["Funding & Grants"]},
+ {label:"I need to build a prototype",cats:["Prototyping Facilities"]},
+ {label:"I want to protect my idea",cats:["IP & Legal"]},
+ {label:"I want mentors or a team",cats:["Mentorship / Community / Fellowship"]},
+ {label:"I want to compete",cats:["Competitions"]},
+ {label:"I'm ready to incubate",cats:["Incubators / Accelerators"]},
+ {label:"I want to value my startup",cats:["Startup Evaluators"]}
+];
+
+const LOC_LABEL={inside:"On campus",outside:"National"};
+const state={q:"",loc:"all",cats:new Set(),stages:new Set()};
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function init(){
+ const intents=$("#intents");
+ const stageChips=$("#stageChips");
+ const chips=$("#chips");
+ const results=$("#results");
+ if(!stageChips||!chips||!results){
+   console.error("Resource Vault: required elements missing.");
+   return;
+ }
+
+ if(intents){
+   intents.innerHTML=INTENTS.map((x,i)=>
+     `<button class="intent-btn" data-i="${i}">${esc(x.label)}</button>`).join("");
+ }
+
+ stageChips.innerHTML=STAGES.map(x=>
+   `<button class="chip" data-stage="${x.key}" aria-pressed="false">${esc(x.label)}</button>`).join("");
+
+ chips.innerHTML=CAT_ORDER.map(c=>
+   `<button class="chip" data-cat="${esc(c)}" aria-pressed="false" style="--dot:${CATS[c].color}">
+     <span class="dot"></span>${esc(CATS[c].short)}
+   </button>`).join("")+
+   `<button class="chip chip-clear" id="clear">Clear all</button>`;
+
+ if(intents){
+   intents.addEventListener("click",e=>{
+     const b=e.target.closest(".intent-btn"); if(!b)return;
+     state.cats=new Set(INTENTS[+b.dataset.i].cats);
+     state.stages.clear();state.q="";$("#q").value="";
+     render();document.querySelector(".toolbar").scrollIntoView({behavior:"smooth",block:"start"});
+   });
+ }
+
+ stageChips.addEventListener("click",e=>{
+   const b=e.target.closest(".chip");if(!b)return;
+   state.stages.has(b.dataset.stage)?state.stages.delete(b.dataset.stage):state.stages.add(b.dataset.stage);
+   render();
+ });
+
+ chips.addEventListener("click",e=>{
+   const b=e.target.closest(".chip");if(!b)return;
+   if(b.id==="clear"){
+     state.cats.clear();state.stages.clear();state.q="";state.loc="all";$("#q").value="";
+   }else{
+     const c=b.dataset.cat;
+     state.cats.has(c)?state.cats.delete(c):state.cats.add(c);
+   }
+   render();
+ });
+
+ $("#locSeg").addEventListener("click",e=>{
+   const b=e.target.closest("button");if(!b)return;
+   state.loc=b.dataset.loc;render();
+ });
+ $("#q").addEventListener("input",e=>{state.q=e.target.value.trim().toLowerCase();render();});
+
+ results.addEventListener("click",e=>{
+   const link=e.target.closest(".tile-link");
+   if(link)return; // let visible link open normally
+   const tile=e.target.closest(".tile");if(!tile)return;
+   openDrawer(DATA[+tile.dataset.i]);
+ });
+
+ $("#dClose").addEventListener("click",closeDrawer);
+ $("#scrim").addEventListener("click",closeDrawer);
+ document.addEventListener("keydown",e=>{if(e.key==="Escape")closeDrawer();});
+
+ render();
+}
+
+function matches(r){
+ if(state.loc!=="all"&&r.loc!==state.loc)return false;
+ if(state.cats.size&&!state.cats.has(r.cat))return false;
+ if(state.stages.size&&!r.stages.some(s=>state.stages.has(s)))return false;
+ if(state.q){
+   const hay=[r.name,r.desc,r.code,r.cat,r.stage,r.url,r.email,r.phone].join(" ").toLowerCase();
+   if(!hay.includes(state.q))return false;
+ }
+ return true;
+}
+
+function tile(r){
+ const i=DATA.indexOf(r),c=CATS[r.cat]||CATS["Other Institutional Support"];
+ const marks=(r.email?'<i>email</i>':'')+(r.phone?'<i>phone</i>':'');
+ const realUrl=/^https?:\/\//i.test(r.url||"");
+ const link=realUrl
+   ? `<a class="tile-link" href="${esc(r.url)}" target="_blank" rel="noopener noreferrer">Open resource ↗</a>`
+   : `<span class="tile-link tile-link--disabled">Link supplied as "${esc(r.url)}"</span>`;
+ return `<article class="tile" data-i="${i}" style="--catc:${c.color}">
+   <span class="tile-code">${esc(r.code)}</span>
+   <span class="tile-name">${esc(r.name)}</span>
+   <span class="tile-tag">${esc(r.stage||LOC_LABEL[r.loc])}</span>
+   ${marks?`<span class="tile-marks">${marks}</span>`:""}
+   ${link}
+ </article>`;
+}
+
+function render(){
+ document.querySelectorAll("#locSeg button").forEach(b=>
+   b.setAttribute("aria-pressed",String(b.dataset.loc===state.loc)));
+ document.querySelectorAll(".chip[data-cat]").forEach(b=>
+   b.setAttribute("aria-pressed",String(state.cats.has(b.dataset.cat))));
+ document.querySelectorAll(".chip[data-stage]").forEach(b=>
+   b.setAttribute("aria-pressed",String(state.stages.has(b.dataset.stage))));
+
+ const hits=DATA.filter(matches);
+ $("#count").textContent=`${hits.length} ${hits.length===1?"resource":"resources"}`;
+ const total=document.getElementById("total");
+ if(total) total.textContent=`${DATA.length} entries · ${CAT_ORDER.length} categories`;
+
+ if(!hits.length){
+   $("#results").innerHTML=`<div class="empty"><strong>Nothing matches that yet.</strong>
+   Try a broader word, or clear the filters to see all ${DATA.length} entries.</div>`;
+   return;
+ }
+
+ const blocks=[
+  {loc:"inside",mark:"A",title:"On campus",note:"Inside IIT Bombay — institute resources and facilities."},
+  {loc:"outside",mark:"B",title:"National",note:"Outside IIT Bombay — government schemes and India-wide programmes."}
+ ];
+
+ $("#results").innerHTML=blocks.map(bl=>{
+   const rows=hits.filter(r=>r.loc===bl.loc);if(!rows.length)return "";
+   const cats=CAT_ORDER.filter(c=>rows.some(r=>r.cat===c)).map(c=>{
+     const items=rows.filter(r=>r.cat===c);
+     return `<section class="cat">
+       <div class="cat-head" style="--catc:${CATS[c].color}">
+         <span class="bar"></span>${esc(c)}<span class="n">${items.length}</span>
+       </div>
+       <div class="grid">${items.map(tile).join("")}</div>
+     </section>`;
+   }).join("");
+   return `<section class="block">
+     <div class="block-head"><span class="block-mark">${bl.mark}</span>
+     <span class="block-title">${esc(bl.title)}</span>
+     <span class="block-note">${esc(bl.note)}</span></div>${cats}
+   </section>`;
+ }).join("");
+}
+
+function openDrawer(r){
+ const c=CATS[r.cat]||CATS["Other Institutional Support"];
+ $("#dCode").textContent=r.code;
+ $("#dCode").style.setProperty("--dcat",c.color);
+ $("#dName").textContent=r.name;
+
+ const rows=[];
+ if(r.desc)rows.push(["What it is",esc(r.desc)]);
+ rows.push(["Category",`<span class="pill" style="--dcat:${c.color}"><span class="dot"></span>${esc(r.cat)}</span>`]);
+ if(r.stage)rows.push(["Best at",esc(r.stage)]);
+ rows.push(["Where",LOC_LABEL[r.loc]+(r.loc==="inside"?" — IIT Bombay":" — open across India")]);
+ if(r.email)rows.push(["Email",`<a href="mailto:${esc(r.email)}">${esc(r.email)}</a>`]);
+ if(r.phone)rows.push(["Phone",esc(r.phone)]);
+
+ const realUrl=/^https?:\/\//i.test(r.url||"");
+ const action=realUrl
+   ? `<a class="go" href="${esc(r.url)}" target="_blank" rel="noopener noreferrer">Open the page &rarr;</a>
+      <div class="go-url">${esc(r.url)}</div>`
+   : `<div class="warn">The Excel entry contains "${esc(r.url)}" rather than a web URL, so no URL was invented.</div>`;
+
+ $("#dBody").innerHTML=
+   rows.map(([k,v])=>`<div class="meta"><div class="meta-k">${k}</div><div class="meta-v">${v}</div></div>`).join("")+
+   (r.warn?`<div class="warn">${esc(r.warn)}</div>`:"")+action+
+   `<div class="verified">${r.ver?"Last verified "+esc(r.ver):"Not yet verified"}</div>`;
+
+ $("#drawer").classList.add("open");
+ $("#scrim").classList.add("open");
+ $("#drawer").focus();
+}
+
+function closeDrawer(){
+ $("#drawer").classList.remove("open");
+ $("#scrim").classList.remove("open");
+}
+
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);
+else init();
+
+})();
+</script></body></html>

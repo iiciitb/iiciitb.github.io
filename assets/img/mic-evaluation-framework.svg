@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 660" role="img" aria-label="MIC IIC evaluation framework pyramid for AY 2025-26">
+  <defs>
+    <linearGradient id="lvl5" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5DD8C6"/>
+      <stop offset="100%" stop-color="#4EC1B3"/>
+    </linearGradient>
+    <linearGradient id="lvl4" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3EB2A8"/>
+      <stop offset="100%" stop-color="#338A98"/>
+    </linearGradient>
+    <linearGradient id="lvl3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3578D8"/>
+      <stop offset="100%" stop-color="#2658A0"/>
+    </linearGradient>
+    <linearGradient id="lvl2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6F6BD8"/>
+      <stop offset="100%" stop-color="#564FAA"/>
+    </linearGradient>
+    <linearGradient id="lvl1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#493AA0"/>
+      <stop offset="100%" stop-color="#382880"/>
+    </linearGradient>
+    <filter id="pyramidShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dx="0" dy="3" result="offsetblur"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.16"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="660" fill="#FAFBFD"/>
+
+  <!-- Rotated section title -->
+  <text font-family="Georgia, serif" font-size="20" font-weight="700" fill="#5F5BD1"
+        transform="translate(45, 510) rotate(-90)">
+    Institution's Innovation Council Guided Activities for AY 2025-26
+  </text>
+
+  <!-- Pyramid slices (bottom to top) -->
+  <g filter="url(#pyramidShadow)">
+    <polygon points="135,470 665,470 740,580 60,580" fill="url(#lvl1)"/>
+    <polygon points="210,360 590,360 665,470 135,470" fill="url(#lvl2)"/>
+    <polygon points="292,240 508,240 590,360 210,360" fill="url(#lvl3)"/>
+    <polygon points="346,160 454,160 508,240 292,240" fill="url(#lvl4)"/>
+    <polygon points="400,80 454,160 346,160" fill="url(#lvl5)"/>
+  </g>
+
+  <!-- Subtle white divider lines between slices -->
+  <g stroke="white" stroke-width="1.5" opacity="0.35">
+    <line x1="346" y1="160" x2="454" y2="160"/>
+    <line x1="292" y1="240" x2="508" y2="240"/>
+    <line x1="210" y1="360" x2="590" y2="360"/>
+    <line x1="135" y1="470" x2="665" y2="470"/>
+  </g>
+
+  <!-- Top slice (Celebration) - label outside, to the right -->
+  <line x1="455" y1="125" x2="502" y2="125" stroke="#4EC1B3" stroke-width="2"/>
+  <text x="512" y="120" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#1B2A8C">Celebration Day</text>
+  <text x="512" y="138" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#1B2A8C">Activities</text>
+  <text x="512" y="156" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#4EC1B3">10% weightage</text>
+
+  <!-- 4th slice (R&D / Climate Cell) - label outside, to the left -->
+  <line x1="290" y1="205" x2="345" y2="205" stroke="#3EB2A8" stroke-width="2"/>
+  <text x="280" y="200" text-anchor="end" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#1B2A8C">R&amp;D Cell / Climate Cell</text>
+  <text x="280" y="218" text-anchor="end" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#1B2A8C">Activities</text>
+  <text x="280" y="236" text-anchor="end" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#3EB2A8">10% weightage</text>
+
+  <!-- Slice 3 (MIC) - label inside -->
+  <text x="400" y="294" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">MIC Driven Activities</text>
+  <text x="400" y="320" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#FFFFFF" opacity="0.92">10% weightage</text>
+
+  <!-- Slice 2 (Self Driven) - label inside -->
+  <text x="400" y="406" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="#FFFFFF">Self Driven Activities</text>
+  <text x="400" y="436" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="#FFFFFF" opacity="0.92">30% weightage</text>
+
+  <!-- Slice 1 (Calendar Driven) - label inside -->
+  <text x="400" y="508" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" font-weight="700" fill="#FFFFFF">IIC Calendar Driven Activities</text>
+  <text x="400" y="540" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">40% weightage</text>
+  <text x="400" y="562" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="#FFFFFF" opacity="0.86">20% can be conducted in online or blended mode</text>
+
+  <!-- Footnote -->
+  <text x="400" y="638" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" font-style="italic" fill="#6b7280">
+    * As prescribed by Ministry of Education's Innovation Cell (MIC)
+  </text>
+</svg>
