@@ -1,10 +1,15 @@
+# Working files — never belong in the deployed site
+photo_council/
+*.xlsx
+*.xls
+*.csv
+*.zip
+originals/
+drafts/
+*.psd
+*.ai
+
+# OS and editor
 .DS_Store
 Thumbs.db
-*.log
-.env
-.env.*
-.vscode/
-.idea/
-node_modules/
-dist/
-*.bak
+desktop.ini
