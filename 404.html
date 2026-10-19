@@ -4,11 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Page not found | IIC IIT Bombay</title>
+<meta name="robots" content="noindex">
 <link rel="stylesheet" href="assets/css/main.css">
 <link rel="icon" href="assets/img/iic-logo.svg" type="image/svg+xml">
 <link rel="icon" href="assets/img/IIC-logo.png" sizes="any">
 </head>
 <body>
+
+<!-- ====================== HEADER ====================== -->
 <header class="site-header">
   <nav class="nav" aria-label="Primary">
     <a href="index.html" class="brand" aria-label="IIC IIT Bombay home">
@@ -33,22 +36,138 @@
   </nav>
 </header>
 
-<main style="min-height: 60vh; display: grid; place-items: center; padding: 80px 20px;">
-  <div style="text-align: center; max-width: 540px;">
-    <span class="eyebrow">404</span>
-    <h1 style="margin-bottom: 16px;">This page doesn't exist.</h1>
-    <p class="lead" style="margin: 0 auto 28px;">The page you were looking for isn't here. It may have moved, or the link may be wrong.</p>
-    <a href="index.html" class="btn btn--primary btn--large">Back to home</a>
+<!-- ====================== HERO ====================== -->
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero-inner">
+      <span class="eyebrow">Error 404</span>
+      <h1>This page took a <em>wrong turn.</em></h1>
+      <p class="lead">The page you were after isn't here. It may have moved, or the link may be wrong. Everything below is a good place to pick up from.</p>
+    </div>
   </div>
-</main>
+</section>
 
+<!-- ====================== WHERE TO GO ====================== -->
+<section class="section">
+  <div class="container">
+    <div class="center" style="margin-bottom: var(--s-7);">
+      <h2>Where did you mean to go?</h2>
+      <div class="divider" style="margin: 16px auto 0;"></div>
+    </div>
+
+    <div class="grid grid--4">
+
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/>
+          </svg>
+        </div>
+        <div class="card-eyebrow">Resources</div>
+        <h3>The Resource Vault</h3>
+        <p>Funding, competitions, incubators, mentorship, prototyping and IP support &mdash; on campus and across India.</p>
+        <a class="card-link" href="resources.html">Open the vault</a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
+          </svg>
+        </div>
+        <div class="card-eyebrow">Events</div>
+        <h3>What's happening</h3>
+        <p>Open competitions, the events we run each year, and the full MIC academic calendar.</p>
+        <a class="card-link" href="events.html">See events</a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="6" cy="12" r="3"/><circle cx="18" cy="12" r="3"/><circle cx="12" cy="6" r="3"/><path d="M8 11l3-3M16 11l-3-3"/>
+          </svg>
+        </div>
+        <div class="card-eyebrow">Initiatives</div>
+        <h3>What we are building</h3>
+        <p>HULT Prize, Smart India Hackathon, KAPILA and YUKTI, plus the council's own initiatives.</p>
+        <a class="card-link" href="initiatives.html">See initiatives</a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <div class="card-eyebrow">Council</div>
+        <h3>Who we are</h3>
+        <p>The Faculty Council and the Student Council 2026-27, plus an archive of past councils.</p>
+        <a class="card-link" href="council.html">Meet the council</a>
+      </div>
+
+    </div>
+
+    <div class="center" style="margin-top: var(--s-7);">
+      <p class="lead" style="margin: 0 auto var(--s-5);">Still stuck, or looking for something that isn't here?</p>
+      <a href="help.html" class="btn btn--primary btn--large">Ask the council</a>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== FOOTER ====================== -->
 <footer class="site-footer">
   <div class="container">
-    <div class="footer-meta" style="border-top: none; margin-top: 0;">
-      <span>© <span data-current-year>2026</span> Institution's Innovation Council, IIT Bombay</span>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="assets/img/IIC-logo.png" alt="" class="brand-logo">
+          <span class="brand-text">IIC IIT Bombay<small>Innovation Council</small></span>
+        </div>
+        <p>The Institution's Innovation Council at IIT Bombay. Established under the Ministry of Education, Government of India. Powered by DSSE, registration IC201810679. 4-star MIC rating.</p>
+        <div class="social">
+          <a href="https://www.instagram.com/iic.iitbombay/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/iic-iit-bombay" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.6v1.7h.05c.5-.9 1.7-1.85 3.5-1.85 3.75 0 4.45 2.46 4.45 5.66V21h-4v-5.4c0-1.29-.03-2.94-1.79-2.94-1.8 0-2.07 1.4-2.07 2.85V21H10z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="about.html">About IIC</a></li>
+          <li><a href="council.html">Council</a></li>
+          <li><a href="initiatives.html">Initiatives</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="ecosystem.html">Innovation Ecosystem</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>For Students</h4>
+        <ul>
+          <li><a href="help.html">Get Help</a></li>
+          <li><a href="resources.html">Resources</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Reach Us</h4>
+        <p>5th Floor, New DSSE Building<br>IIT Bombay, Powai<br>Mumbai 400076</p>
+        <p><a href="mailto:iic@iitb.ac.in" style="color: var(--c-gold);">iic@iitb.ac.in</a></p>
+      </div>
+    </div>
+
+    <div class="footer-meta">
+      <span>&copy; <span data-current-year>2026</span> Institution's Innovation Council, IIT Bombay</span>
+      <span>Established under the Ministry of Education, Government of India</span>
     </div>
   </div>
 </footer>
+
 <script src="assets/js/main.js" defer></script>
 </body>
 </html>
