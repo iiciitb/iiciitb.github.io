@@ -8,8 +8,13 @@ originals/
 drafts/
 *.psd
 *.ai
+*.docx
+*.doc
 
 # OS and editor
 .DS_Store
 Thumbs.db
 desktop.ini
+*.docx
+*.doc
+tools/
