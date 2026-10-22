@@ -117,6 +117,25 @@ p  { margin: 0 0 var(--s-4); color: var(--c-ink-soft); }
   .grid--2, .grid--3, .grid--4 { grid-template-columns: 1fr; }
 }
 
+/* IIT Bombay mark precedes the IIC logo and wordmark. */
+.brand-group {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-3);
+  min-width: 0;
+  flex: 0 0 auto;
+}
+.brand-group .brand { flex: 0 0 auto; }
+.brand-group .iitb-logo-link { margin-left: 0; }
+.footer-brand .footer-iitb-logo-link { margin-left: 0; }
+@media (max-width: 520px) {
+  .brand-group { gap: 6px; }
+  .brand-group .iitb-logo-link,
+  .footer-brand .footer-iitb-logo-link { width: 30px; height: 36px; }
+  .brand-group .iitb-logo,
+  .footer-brand .footer-iitb-logo-link .iitb-logo { width: 30px; height: 36px; }
+}
+
 /* ---------- 5. Header / Nav ---------- */
 .site-header {
   position: sticky; top: 0; z-index: 50;
@@ -139,7 +158,16 @@ p  { margin: 0 0 var(--s-4); color: var(--c-ink-soft); }
   box-shadow: var(--sh-navy);
 }
 .brand-text { font-family: var(--f-head); font-weight: 700; color: var(--c-navy); line-height: 1.1; }
-.brand-text small { display: block; font-family: var(--f-body); font-weight: 600; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--c-muted); margin-top: 2px; }
+.brand-text small {
+  display: block;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: inherit;
+  margin-top: 0;
+}
 
 .nav-links { display: flex; align-items: center; gap: var(--s-2); list-style: none; margin: 0; padding: 0; }
 .nav-links a {
@@ -150,6 +178,12 @@ p  { margin: 0 0 var(--s-4); color: var(--c-ink-soft); }
 .nav-links a:hover { background: var(--c-soft); color: var(--c-navy); }
 .nav-links a[aria-current="page"] { color: var(--c-navy); background: var(--c-soft); }
 .nav-cta { display: flex; align-items: center; gap: var(--s-3); }
+
+/* Requested IIT Bombay mark to the right of the Get Help button */
+.iitb-logo-link { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; width: 36px; height: 42px; margin-left: 2px; }
+.iitb-logo { display: block; width: 36px; height: 42px; object-fit: contain; }
+.site-header .brand-text small { font-size: 9px; letter-spacing: 0.08em; white-space: nowrap; }
+@media (max-width: 520px) { .iitb-logo-link, .iitb-logo { width: 30px; height: 36px; } .site-header .brand-text small { font-size: 7.5px; letter-spacing: 0.035em; } }
 
 /* Hamburger (mobile) */
 .hamburger { display: none; background: none; border: 0; padding: 8px; }
@@ -246,12 +280,14 @@ p  { margin: 0 0 var(--s-4); color: var(--c-ink-soft); }
 .hero-actions { display: flex; gap: var(--s-3); flex-wrap: wrap; }
 .hero-art {
   position: relative;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.16);
-  border-radius: var(--r-xl);
-  padding: var(--s-6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  /* Let the circular ecosystem diagram sit directly on the hero gradient. */
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 .hero-art svg { width: 100%; height: auto; }
 
@@ -783,12 +819,12 @@ p  { margin: 0 0 var(--s-4); color: var(--c-ink-soft); }
 
 /* ---------- 16h. Brand logo (replaces text monogram) ---------- */
 .brand-logo {
-  width: 44px; height: 44px;
+  width: 50px;
+  height: 58px;
   object-fit: contain;
   flex-shrink: 0;
   display: block;
-  border-radius: 50%;
-  box-shadow: 0 4px 10px rgba(27, 42, 140, 0.16);
+  background: transparent;
 }
 .site-footer .brand-logo {
   box-shadow: 0 4px 14px rgba(0,0,0,0.35);
@@ -1969,4 +2005,100 @@ details.past-council-year:not([open]) > summary.past-council-header {
 @media print {
   .site-header, .site-footer, .cta-band, .nav-cta, .hamburger { display: none; }
   body { color: #000; }
+}
+
+/* ---------- IIC symbol + single-colour council wordmark ---------- */
+.site-header .brand-logo,
+.site-footer .brand-logo {
+  width: 43px;
+  height: 54px;
+  max-height: 54px;
+  object-fit: contain;
+  flex: 0 0 auto;
+  display: block;
+  border-radius: 0;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.site-header .brand-text,
+.site-header .brand-text small {
+  color: var(--c-navy);
+}
+.site-header .brand-text {
+  max-width: 205px;
+  font-size: 12px;
+  line-height: 1.16;
+  letter-spacing: 0.015em;
+  white-space: normal;
+}
+.site-header .brand-text small {
+  margin-top: 4px;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+}
+.site-footer .footer-brand {
+  align-items: center;
+  gap: var(--s-3);
+}
+.site-footer .brand-text,
+.site-footer .brand-text small {
+  color: #fff;
+}
+.site-footer .brand-text {
+  max-width: 170px;
+  font-size: 11.5px;
+  line-height: 1.16;
+  letter-spacing: 0.01em;
+}
+.site-footer .brand-text small {
+  margin-top: 4px;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+@media (max-width: 520px) {
+  .site-header .brand-logo {
+    width: 33px;
+    height: 42px;
+    max-height: 42px;
+  }
+  .site-header .brand-text {
+    max-width: 118px;
+    font-size: 8.5px;
+    line-height: 1.12;
+  }
+  .site-header .brand-text small {
+    font-size: 7px;
+    letter-spacing: 0.055em;
+    white-space: normal;
+  }
+  .site-footer .brand-logo {
+    width: 39px;
+    height: 48px;
+    max-height: 48px;
+  }
+  .site-footer .brand-text {
+    max-width: 155px;
+    font-size: 11px;
+  }
+}
+
+
+
+/* Requested header wordmark refinement: keep the council name on one line,
+   and show IIT BOMBAY below it at the same size and in the same colour. */
+.site-header .brand-text {
+  white-space: nowrap;
+}
+.site-header .brand-text small {
+  display: block;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: normal;
+  text-transform: none;
+  color: inherit;
+  white-space: nowrap;
+  margin-top: 2px;
 }
