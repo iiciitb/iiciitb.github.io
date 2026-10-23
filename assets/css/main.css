@@ -117,7 +117,7 @@ p  { margin: 0 0 var(--s-4); color: var(--c-ink-soft); }
   .grid--2, .grid--3, .grid--4 { grid-template-columns: 1fr; }
 }
 
-/* IIT Bombay mark precedes the IIC logo and wordmark. */
+/* IIC logo and wordmark first, then the IIT Bombay mark. */
 .brand-group {
   display: inline-flex;
   align-items: center;
@@ -2010,9 +2010,12 @@ details.past-council-year:not([open]) > summary.past-council-header {
 /* ---------- IIC symbol + single-colour council wordmark ---------- */
 .site-header .brand-logo,
 .site-footer .brand-logo {
-  width: 43px;
-  height: 54px;
-  max-height: 54px;
+  /* Height-driven, not width-driven. The institutional lockup is wider than
+     it is tall, so a fixed width made object-fit shrink it to a sliver.
+     Set to 0.9x the IIT Bombay emblem so the pair reads evenly. */
+  height: 48px;
+  width: auto;
+  max-width: 200px;
   object-fit: contain;
   flex: 0 0 auto;
   display: block;
@@ -2020,6 +2023,48 @@ details.past-council-year:not([open]) > summary.past-council-header {
   padding: 0;
   background: transparent;
   box-shadow: none;
+}
+
+/* ---------- Mark order: IIC symbol, IIT Bombay emblem, then the wordmark ----
+   The three are siblings inside .brand-group so the institute emblem can sit
+   between the council symbol and the council name. */
+.brand-group .brand--mark,
+.footer-brand .brand-logo { order: 1; }
+.brand-group .iitb-logo-link,
+.footer-brand .footer-iitb-logo-link { order: 2; }
+.brand-group .brand--word,
+.footer-brand .brand-text { order: 3; }
+
+.brand-group .brand--mark,
+.brand-group .brand--word { gap: 0; }
+.brand-group { gap: var(--s-2); }
+
+/* The IIT Bombay emblem matches the IIC mark's height so they read as a pair,
+   with a hairline rule separating the two institutions. */
+.site-header .iitb-logo-link {
+  width: auto;
+  height: 54px;
+  margin-left: 0;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-left: 1px solid var(--c-rule);
+  border-right: 1px solid var(--c-rule);
+}
+.site-header .iitb-logo {
+  width: auto;
+  height: 54px;
+}
+
+@media (max-width: 1100px) {
+  .site-header .brand-logo { height: 40px; }
+  .site-header .iitb-logo,
+  .site-header .iitb-logo-link { height: 44px; }
+}
+@media (max-width: 520px) {
+  .site-header .brand-logo { height: 32px; }
+  .site-header .iitb-logo,
+  .site-header .iitb-logo-link { height: 36px; }
+  .site-header .iitb-logo-link { margin-left: 0; padding-left: 7px; padding-right: 7px; }
 }
 .site-header .brand-text,
 .site-header .brand-text small {
@@ -2059,9 +2104,9 @@ details.past-council-year:not([open]) > summary.past-council-header {
 }
 @media (max-width: 520px) {
   .site-header .brand-logo {
-    width: 33px;
-    height: 42px;
-    max-height: 42px;
+    width: auto;
+    height: 32px;
+    max-height: 32px;
   }
   .site-header .brand-text {
     max-width: 118px;
@@ -2074,9 +2119,9 @@ details.past-council-year:not([open]) > summary.past-council-header {
     white-space: normal;
   }
   .site-footer .brand-logo {
-    width: 39px;
-    height: 48px;
-    max-height: 48px;
+    width: auto;
+    height: 44px;
+    max-height: 44px;
   }
   .site-footer .brand-text {
     max-width: 155px;
